@@ -7,6 +7,7 @@ header {
 nav {
 	background-color: #00A6B3;
 	padding: 20px 0;
+	border-bottom: 2px solid white;
 }
 
 h1 {
@@ -53,4 +54,42 @@ main {
 
 img {
 	margin: 40px 8px 0;
+}
+
+footer {
+	text-transform: uppercase;
+	padding: 0 20px;
+	background-color: #0d2c40;
+	color: #ffffff;
+	font-size: 14px;
+	letter-spacing: .08em;
+	font-weight: 500;
+}
+
+a:hover {
+	border-bottom: 2px solid white;
+}
+
+.copyright {
+	font-family: "Raleway", sans-serif;
+	float: left;
+}
+
+.message {
+	font-family: "Raleway", sans-serif;
+	float: right;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	content: " ";
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+
+.name {
+	color: #F15B31;
+	font-weight: 700;
 }
