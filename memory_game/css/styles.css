@@ -70,6 +70,24 @@ a:hover {
 	border-bottom: 2px solid white;
 }
 
+#score {
+	float: right;
+	font-size: 36px;
+	line-height: 40px;
+	margin: auto 50px;
+}
+
+#reset {
+	float: left;
+	margin: auto 50px;
+	width: 175px;
+	height: 40px;
+	line-height: 40px;
+	background: #00cada;
+	color: #ffffff;
+	font-size: 24px;
+}
+
 .copyright {
 	font-family: "Raleway", sans-serif;
 	float: left;
