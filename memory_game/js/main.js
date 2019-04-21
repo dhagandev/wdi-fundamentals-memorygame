@@ -25,6 +25,15 @@ var cardsInPlay = [];
 var matchMade = 0;
 var score = 0;
 
+function shuffleArray(array) {
+	for (var i = array.length -1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+}
+
 function reset() {
 	var resetButton = document.getElementById('reset');
 	resetButton.style.display = "block";
@@ -44,12 +53,15 @@ function updateScore() {
 }
 
 function checkForMatch() {
-	if (cardsInPlay[0] === cardsInPlay[1]) {
-		cardsInPlay = [];
+	var card1 = cards[cardsInPlay[0]];
+	var card2 = cards[cardsInPlay[1]];
+	if (card1.rank === card2.rank) {
 		matchMade += 1;
 		score += 5;
 		updateScore();
-		alert("You found a match!");
+		setTimeout(function() {
+			alert("You found a match!");
+		}, 10);
 
 		if (matchMade === cards.length/2) {
 			var resetElement = document.getElementById('reset');
@@ -61,19 +73,29 @@ function checkForMatch() {
 		score -= 1;
 		updateScore();
 		alert("Sorry, try again.");
+		var card1Element = document.querySelector("img[data-id=\"" + cardsInPlay[0] + "\"]");
+		var card2Element = document.querySelector("img[data-id=\"" + cardsInPlay[1] + "\"]");
+		setTimeout(function() {
+			card1Element.src = "images/back.png";
+			card2Element.src = "images/back.png";
+		}, 20);
 	}
+	cardsInPlay = [];
 }
 
 function flipCard() {
 	var cardId = this.getAttribute('data-id');
-	cardsInPlay.push(cards[cardId].rank);
 	this.setAttribute('src', cards[cardId].cardImage);
+	cardsInPlay.push(cardId);
 	if (cardsInPlay.length === 2) {
-		checkForMatch();
+		setTimeout(function() {
+			checkForMatch();
+		}, 10);
 	}
 };
 
 function createBoard() {
+	shuffleArray(cards);
 	document.getElementById('reset').style.display = "none";
 	updateScore();
 	for (var i = 0; i < cards.length; i++) {
